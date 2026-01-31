@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Transaction, TransactionType, Category, FamilySettings } from './types';
-import Dashboard from './components/Dashboard';
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
-import AIAdvisor from './components/AIAdvisor';
-import YearlyOverview from './components/YearlyOverview';
-import Settings from './components/Settings';
-import OnboardingWizard from './components/OnboardingWizard';
+import { Transaction, TransactionType, Category, FamilySettings } from './types.ts';
+import Dashboard from './components/Dashboard.tsx';
+import TransactionForm from './components/TransactionForm.tsx';
+import TransactionList from './components/TransactionList.tsx';
+import AIAdvisor from './components/AIAdvisor.tsx';
+import YearlyOverview from './components/YearlyOverview.tsx';
+import Settings from './components/Settings.tsx';
+import OnboardingWizard from './components/OnboardingWizard.tsx';
 import { LayoutDashboard, PlusCircle, History, Sparkles, BarChart3, ChevronRight, Settings as SettingsIcon } from 'lucide-react';
 
 const DEFAULT_CATEGORIES: Category[] = [
