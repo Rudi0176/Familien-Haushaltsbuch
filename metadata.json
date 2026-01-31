@@ -1,0 +1,7 @@
+{
+  "name": "Familien Haushaltsbuch",
+  "description": "Ein modernes, mobiles Haushaltsbuch für die ganze Familie mit Einnahmen-/Ausgaben-Tracking und KI-Finanzberatung.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
