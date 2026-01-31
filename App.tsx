@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Transaction, TransactionType, Category, FamilySettings } from './types.ts';
-import Dashboard from './components/Dashboard.tsx';
-import TransactionForm from './components/TransactionForm.tsx';
-import TransactionList from './components/TransactionList.tsx';
-import AIAdvisor from './components/AIAdvisor.tsx';
-import YearlyOverview from './components/YearlyOverview.tsx';
-import Settings from './components/Settings.tsx';
-import OnboardingWizard from './components/OnboardingWizard.tsx';
+import { Transaction, TransactionType, Category, FamilySettings } from './types';
+import Dashboard from './Dashboard';
+import TransactionForm from './TransactionForm';
+import TransactionList from './TransactionList';
+import AIAdvisor from './AIAdvisor';
+import YearlyOverview from './YearlyOverview';
+import Settings from './Settings';
+import OnboardingWizard from './OnboardingWizard';
 import { LayoutDashboard, PlusCircle, History, Sparkles, BarChart3, ChevronRight, Settings as SettingsIcon } from 'lucide-react';
 
 const DEFAULT_CATEGORIES: Category[] = [
@@ -137,7 +137,6 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex bg-[#f8fafc]">
-      {/* Desktop Sidebar */}
       <nav className="hidden md:flex flex-col fixed left-0 top-0 bottom-0 w-[260px] bg-[#1e293b] text-slate-300 z-50 border-r border-slate-800 shadow-2xl no-print">
         <div className="p-8 flex items-center gap-4">
           <div className="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg shadow-violet-500/20">€</div>
@@ -158,7 +157,6 @@ const App: React.FC = () => {
             onClick={() => { setActiveTab('ai'); setEditingTransaction(null); }} 
             icon={<Sparkles size={20} className={activeTab === 'ai' ? 'text-yellow-400' : 'text-violet-400'}/>} 
             label="KI Spar-Berater" 
-            special={true}
           />
         </div>
 
@@ -174,7 +172,6 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Main Content Area */}
       <main className="flex-1 md:ml-[260px] min-h-screen">
         <div className="max-w-6xl mx-auto p-4 md:p-10 pb-24 md:pb-10">
           {activeTab === 'dashboard' && (
@@ -212,7 +209,6 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Mobile Bottom Nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around items-center pt-3 pb-6 px-4 z-50 shadow-[0_-10px_30px_-10px_rgba(0,0,0,0.1)] no-print">
         <MobileNavButton active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')} icon={<LayoutDashboard size={24}/>} />
         <MobileNavButton active={activeTab === 'add'} onClick={() => setActiveTab('add')} icon={<PlusCircle size={24}/>} />
@@ -224,7 +220,7 @@ const App: React.FC = () => {
   );
 };
 
-const NavButton = ({ active, onClick, icon, label, special = false }: { active: boolean, onClick: () => void, icon: React.ReactNode, label: string, special?: boolean }) => (
+const NavButton = ({ active, onClick, icon, label }: any) => (
   <button 
     onClick={onClick}
     className={`w-full flex items-center justify-between group px-4 py-3 rounded-xl transition-all duration-200 ${
@@ -234,7 +230,7 @@ const NavButton = ({ active, onClick, icon, label, special = false }: { active: 
     }`}
   >
     <div className="flex items-center gap-3">
-      <span className={`transition-colors ${active ? (special ? 'text-violet-400' : 'text-violet-400') : 'text-slate-500 group-hover:text-slate-300'}`}>
+      <span className={`transition-colors ${active ? 'text-violet-400' : 'text-slate-500 group-hover:text-slate-300'}`}>
         {icon}
       </span>
       <span className={`text-sm font-semibold ${active ? 'text-white' : ''}`}>{label}</span>
@@ -243,7 +239,7 @@ const NavButton = ({ active, onClick, icon, label, special = false }: { active: 
   </button>
 );
 
-const MobileNavButton = ({ active, onClick, icon }: { active: boolean, onClick: () => void, icon: React.ReactNode }) => (
+const MobileNavButton = ({ active, onClick, icon }: any) => (
   <button 
     onClick={onClick}
     className={`p-3 rounded-2xl transition-all ${active ? 'bg-violet-100 text-violet-600 scale-105' : 'text-slate-400'}`}
